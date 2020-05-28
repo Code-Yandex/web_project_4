@@ -39,3 +39,6 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 editBtn.addEventListener("click", toggle);
 closeBtn.addEventListener("click", toggle);
+
+// Do I make the like buttons toggle, wasn't sure since Figma said nothing about it
+// If its needed let me know please
