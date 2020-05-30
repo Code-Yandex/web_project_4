@@ -8,6 +8,7 @@
     grid-column: 1;
     grid-row: span 2;
     justify-self: start;
+    background-size: cover;
 }
 
 @media screen and (max-width:800px) {

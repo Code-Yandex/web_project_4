@@ -1,6 +1,7 @@
 .gallery__group {
     background-color: #FFFFFF;
     height: 79px;
+    width: 282px;
     display: flex;
     justify-content: space-between;
     margin: 0;

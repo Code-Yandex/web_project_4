@@ -5,70 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Around the USA</title>
     <meta name="author" content="Austin Cook">
-    <link rel="stylesheet" type="text/css" href="pages/index.css">
+    <link rel="stylesheet" type="text/css" href='pages/index.css'>
   </head>
   <body class="page">
     <div class="page__content">
         <header class="header">
-            <img class="header__logo" src="images/around_the_us.svg" alt="around the us">
+            <div class="header__logo" style="background-image:url('images/around_the_us.svg')" 
+              alt="around the us"></div>
         </header>
+      <main>
         <section class="profile">
             <div class="profile__info">
-                <img class="profile__picture" src="images/Jacques-Cousteau.jpg" alt="Jacques Cousteau">
+                <div class="profile__picture" style="background-image:url('images/George-wheeler.jpg')" 
+                  alt="George Wheeler"></div>
                 <div class="profile__name-line">
-                    <h1 class="profile__name">Jacques Cousteau</h1>  
+                    <h1 class="profile__name">George Wheeler</h1>  
                     <button class="profile__edit-button"></button>
                 </div>
                 <p class="profile__profession">Explorer</p>
-                <!-- If I am allowed I will change the profile image and text to something else -->
+                <!-- Changed to an older American explorer -->
             </div>
             <button class="profile__add-button"></button>
         </section>
         <section class="gallery">
             <ul class="gallery__grid">
                 <li class="gallery__conainer">
-                    <img class="gallery__image" src="images/Golden-Gate-Bridge.jpg" alt="Golden Gate Bridge">
+                    <div class="gallery__image" style="background-image:url('images/Golden-Gate-Bridge.jpg')" 
+                      alt="Golden Gate Bridge"></div>
                     <div class="gallery__group"><p class="gallery__text">Golden Gate Bridge</p>
                         <button class="gallery__like-button"></button>
                     </div>
                 </li>
                   <li class="gallery__conainer">
-                    <img class="gallery__image" src="images/Grand-Canyon.jpg" alt="Grand Canyon">
+                    <div class="gallery__image" style="background-image:url('images/Grand-Canyon.jpg')" 
+                      alt="Grand Canyon"></div>
                       <div class="gallery__group"><p class="gallery__text">Grand Canyon</p>
                         <button class="gallery__like-button"></button>
                     </div>
                 </li>
                   <li class="gallery__conainer">
-                    <img class="gallery__image" src="images/Mount-Rushmore.jpg" alt="Mount Rushmore">
+                    <div class="gallery__image" style="background-image:url('images/Mount-Rushmore.jpg')" 
+                      alt="Mount Rushmore"></div>
                     <div class="gallery__group"><p class="gallery__text">Mount Rushmore</p>
                         <button class="gallery__like-button"></button>
                     </div>
                 </li>
                   <li class="gallery__conainer">
-                    <img class="gallery__image" src="images/Old-Faithful.jpg" alt="Old Faithful">
+                    <div class="gallery__image" style="background-image:url('images/Old-Faithful.jpg')" 
+                      alt="Old Faithful"></div>
                     <div class="gallery__group"><p class="gallery__text">Old Faithful</p>
                         <button class="gallery__like-button"></button>
                     </div>
                 </li>
                   <li class="gallery__conainer">
-                    <img class="gallery__image" src="images/Red-Woods.jpg" alt="Red Woods">
+                    <div class="gallery__image" style="background-image:url('images/Red-Woods.jpg')" 
+                      alt="Red Woods"></div>
                     <div class="gallery__group"><p class="gallery__text">Red Woods</p>
                         <button class="gallery__like-button"></button>
                     </div>
                 </li>
                   <li class="gallery__conainer">
-                    <img class="gallery__image" src="images/Downer.jpg" alt="Downer">
+                    <div class="gallery__image" style="background-image:url('images/Downer.jpg')" 
+                      alt="Downer"></div>
                     <div class="gallery__group"><p class="gallery__text">Downer</p>
                         <button class="gallery__like-button"></button>
                     </div>
                 </li>
             </ul>
         </section>
+      </main>
         <footer class="footer">
             <p class="footer__copyright">© 2020 Austin Cook</p>
-            <!-- not sure if they want Around the U.S. or our name here -->
         </footer>
-        <section class="popout">
+        <div class="popout">
             <div class="popout__container">
                 <button class="popout__close-button"></button>
                 <form class="popout__form">
@@ -80,7 +89,7 @@
                     <button class="popout__button" type="submit" value="Save">Save</button>
                 </form>
             </div>
-        </section>
+        </div>
     </div>
     <script src="index.js"></script>
   </body>
