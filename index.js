@@ -1,43 +1,129 @@
-// Let's find the form in the DOM
-const formElement = document.querySelector(".popout__form");
-const nameInput = formElement.querySelector(".popout__form-input_type_name");
-const profileName = document.querySelector(".profile__name");
-const jobInput = formElement.querySelector(".popout__form-input_type_job");
-const profileJob = document.querySelector(".profile__profession");
-const editBtn = document.querySelector(".profile__edit-button");
-const closeBtn = document.querySelector(".popout__close-button");
-const popout = document.querySelector(".popout__container");
+//profile modal
+const profilePopout = document.querySelector(".popout__container_profile-edit");
+const profileFormElement = profilePopout.querySelector(".popout__form");
+const nameInput = profileFormElement.querySelector(".popout__form-input_type_name");
+const jobInput = profileFormElement.querySelector(".popout__form-input_type_job");
+const profileCloseBtn = profilePopout.querySelector(".popout__close-button");
 
-function toggle() {   
+//profile
+const profile = document.querySelector(".profile");
+const nameOutput = profile.querySelector(".profile__name");
+const jobOutput = profile.querySelector(".profile__profession");
+const editBtn = profile.querySelector(".profile__edit-button");
+const addButton = profile.querySelector(".profile__add-button");
+
+//gallery modal
+const galleryPopout = document.querySelector(".popout__container_gallery-add");
+const galleryFormElement = galleryPopout.querySelector(".popout__form");
+const galleryCloseBtn = galleryPopout.querySelector(".popout__close-button");
+const titleInput = galleryFormElement.querySelector(".popout__form-input_type_title");
+const imageInput = galleryFormElement.querySelector(".popout__form-input_type_image");
+
+//gallery
+const galleryTemplate = document.querySelector("#gallery-object").content;
+const galleryContainer = document.querySelector(".gallery__grid");
+
+//picture modal
+const picturePopout = document.querySelector(".popout__container_picture-view");
+const pictureCloseBtn = picturePopout.querySelector(".popout__close-button");
+const popoutImage =  picturePopout.querySelector(".popout__picture");
+const popoutTitle = picturePopout.querySelector(".popout__title");
+
+
+const initialCards = [
+    {
+        name: "Downer",
+        link: "images/Downer.jpg"
+    },
+    {
+        name: "Red Woods",
+        link: "images/Red-Woods.jpg"
+    },
+    {
+        name: "Old Faithful",
+        link: "images/Old-Faithful.jpg"
+    },
+    {
+        name: "Mount Rushmore",
+        link: "images/Mount-Rushmore.jpg"
+    },
+    {
+        name: "Grand Canyon",
+        link: "images/Grand-Canyon.jpg"
+    },
+    {
+        name: "Golden Gate Bridge",
+        link: "images/Golden-Gate-Bridge.jpg"
+    }
+];
+
+
+function toggleModal(popout) { 
+
     popout.classList.toggle("popout__container_active");
 }
+   
+function profileFormSubmitHandler (evt) {
+    evt.preventDefault();
 
-// Next is the form submit handler, though
-// it won't submit anywhere just yet
-
-function formSubmitHandler (evt) {
-    evt.preventDefault(); // This line stops the browser from submitting the form in the default way.
-                                                // Having done so, we can define our own way of submitting the form.
-                                                // We'll explain it in more detail later.
-
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-
-    toggle()
-
-
-    // Get the values of each field from the corresponding value property
-
-    // Select elements where the field values will be entered
-
-    // Insert new values using the textContent property of the querySelector() method
+    nameOutput.textContent = nameInput.value;
+    jobOutput.textContent = jobInput.value;
+    
+    toggleModal(profilePopout);
 }
 
-// Connect the handler to the form:
-// it will watch the submit event
+function galleryCreateCard(image, title){
+    const galleryElement = galleryTemplate.cloneNode(true);
+    const galleryImage = galleryElement.querySelector(".gallery__image");
+    const galleryText = galleryElement.querySelector(".gallery__text");
+    const galleryTrash = galleryElement.querySelector(".gallery__trash-button");
+    const galleryLike = galleryElement.querySelector(".gallery__like-button");
+    galleryImage.src = image;
+    galleryImage.alt = title;
+    galleryText.textContent = title;
+    
+    //delete button:
+galleryTrash.addEventListener("click", () => {
+    galleryTrash.parentElement.remove();
+});
 
-formElement.addEventListener('submit', formSubmitHandler);
-editBtn.addEventListener("click", toggle);
-closeBtn.addEventListener("click", toggle);
+//like-button
+galleryLike.addEventListener("click", () => {
+    galleryLike.classList.toggle("gallery__like-button_active");
+});
 
-// Thank you for the info
+    //picture
+galleryImage.addEventListener('click', (evt) => {
+    popoutImage.src = evt.target.src;
+    popoutImage.alt = evt.target.alt;
+    popoutTitle.textContent = evt.target.alt;
+    
+    toggleModal(picturePopout);
+});
+    return galleryElement;
+
+}
+
+function galleryHandleCard(image, title){
+        galleryContainer.prepend(galleryCreateCard(image, title));
+
+}
+
+function galleryFormSubmitHandler (evt) {
+    evt.preventDefault();
+    galleryHandleCard(imageInput.value, titleInput.value);
+    
+   galleryFormElement.reset();
+    toggleModal(galleryPopout);
+}
+
+//run initial cards through
+initialCards.forEach((object) => galleryHandleCard(object.link, object.name));
+
+profileFormElement.addEventListener('submit', profileFormSubmitHandler);
+editBtn.addEventListener("click", () => toggleModal(profilePopout));
+profileCloseBtn.addEventListener("click", () => toggleModal(profilePopout));
+addButton.addEventListener("click", () => toggleModal(galleryPopout));
+galleryCloseBtn.addEventListener("click", () => toggleModal(galleryPopout));
+galleryFormElement.addEventListener('submit', galleryFormSubmitHandler);
+pictureCloseBtn.addEventListener("click", () => toggleModal(picturePopout));
