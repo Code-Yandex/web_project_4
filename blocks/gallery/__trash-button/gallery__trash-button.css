@@ -9,6 +9,7 @@
      cursor: pointer;
      background-image: url(../../../images/trash.svg);
      background-size: contain;
+     background-repeat: no-repeat;
      width: 18px;
      height: 19px;
      transition: .3s opacity ease-in-out;
