@@ -10,13 +10,15 @@
   <body class="page">
     <div class="page__content">
         <header class="header">
-            <div class="header__logo" style="background-image:url('images/around_the_us.svg')" 
-              alt="around the us"></div>
+            <img class="header__logo" src="images/around_the_us.svg" 
+              alt="around the us">
         </header>
         <section class="profile">
             <div class="profile__info">
-                <div class="profile__picture" style="background-image:url('images/George-wheeler.jpg')" 
-                  alt="George Wheeler"></div>
+                <img class="profile__picture" src="images/George-wheeler.jpg" 
+                  alt="George Wheeler">
+                  <!-- Thank you for the help and compliments -->
+                  <!-- Always glad to see a good report -->
                 <div class="profile__name-line">
                     <h1 class="profile__name">George Wheeler</h1>  
                     <button class="profile__edit-button"></button>
@@ -26,14 +28,13 @@
             <button class="profile__add-button"></button>
         </section>
         <section class="gallery">
-            <ul class="gallery__grid">
-                
+            <ul class="gallery__grid"> 
             </ul>
         </section>
         <footer class="footer">
             <p class="footer__copyright">© 2020 Austin Cook</p>
         </footer>
-        <section class="popout popout_profile-edit">
+        <div class="popout popout_profile-edit">
           <div class="popout__container popout__container_profile-edit">
               <button class="popout__close-button"></button>
               <form class="popout__form">
@@ -46,8 +47,8 @@
                     type="submit" value="Save">Save</button>
               </form>
           </div>
-      </section>
-      <section class="popout popout_gallery-add">
+        </div>
+      <div class="popout popout_gallery-add">
           <div class="popout__container popout__container_gallery-add">
               <button class="popout__close-button "></button>
               <form class="popout__form popout_gallery-add__form">
@@ -60,8 +61,8 @@
                     type="submit" value="Save">Create</button>
               </form>
           </div>
-      </section>
-      <section class="popout popout_picture-view">
+        </div>
+      <div class="popout popout_picture-view">
           <div class="popout__container popout__container_picture-view">
               <button class="popout__close-button"></button>
               <figure class="popout__picture-container">
@@ -69,7 +70,7 @@
                 <figcaption class="popout__title"></figcaption> 
               </figure>
           </div>
-      </section>
+      </div>
   </div>
   <template id="gallery-object">
       <li class="gallery__container">

@@ -1,5 +1,4 @@
 .popout__container{
-    display: -ms-grid;
     display: grid;
     visibility: hidden;
     position: fixed;
