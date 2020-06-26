@@ -109,16 +109,39 @@ function galleryHandleCard(image, title){
 
 }
 
+//run initial cards through
+initialCards.forEach((object) => galleryHandleCard(object.link, object.name));
+
 function galleryFormSubmitHandler (evt) {
     evt.preventDefault();
     galleryHandleCard(imageInput.value, titleInput.value);
     
    galleryFormElement.reset();
+    setSubmitButtonState(false);
     toggleModal(galleryPopout);
 }
 
-//run initial cards through
-initialCards.forEach((object) => galleryHandleCard(object.link, object.name));
+const modalOtherToggle = () => {
+    const modalList = Array.from(document.querySelectorAll(".popout__container"));
+    modalList.forEach( (modal) => {
+        modal.addEventListener("click", (evt) => {
+        toggleModal(evt.target);
+        });
+
+    });
+
+    modalList.forEach(() => {
+        
+        document.addEventListener("keydown", (evt) =>{
+            const escKeyCode = 27;
+            if (evt.keyCode === escKeyCode){
+                toggleModal(document.querySelector(".popout__container_active"));
+        }
+    });
+   });
+}
+
+modalOtherToggle();
 
 profileFormElement.addEventListener('submit', profileFormSubmitHandler);
 editBtn.addEventListener("click", () => toggleModal(profilePopout));
