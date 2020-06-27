@@ -60,7 +60,14 @@ function enableValidation() {
     });
 }
 
-enableValidation();
+enableValidation({
+    formSelector: ".popout__form",
+    inputSelector: ".popout__input",
+    submitButtonSelector: ".popout__button",
+    inactiveButtonClass: "popout__button_disabled",
+    inputErrorClass: "popout__input_type_error",
+    errorClass: "popout__form-input-error_active"
+  });
 // changed some names to match code requirements
 // "popout__form-input-error_active" should be equal to "popup__error_visible"
 // seems like everything works according to the steps
