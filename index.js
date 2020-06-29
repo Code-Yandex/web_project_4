@@ -136,7 +136,9 @@ const modalOtherToggle = () => {
             const escKeyCode = 27;
             if (evt.keyCode === escKeyCode){
                 toggleModal(document.querySelector(".popout__container_active"));
-        }
+        } else {
+                document.removeEventListener("keyup", (evt));
+            };
     });
    });
 }
