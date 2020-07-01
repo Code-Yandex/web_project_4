@@ -121,29 +121,20 @@ function galleryFormSubmitHandler (evt) {
     toggleModal(galleryPopout);
 }
 
-const modalOtherToggle = () => {
-    const modalList = Array.from(document.querySelectorAll(".popout__container"));
-    modalList.forEach( (modal) => {
-        modal.addEventListener("click", (evt) => {
-        toggleModal(evt.target);
-        });
-
-    });
-
-    modalList.forEach(() => {
-        
-        document.addEventListener("keydown", (evt) =>{
-            const escKeyCode = 27;
-            if (evt.keyCode === escKeyCode){
-                toggleModal(document.querySelector(".popout__container_active"));
-        } else {
-                document.removeEventListener("keyup", (evt));
-            };
-    });
-   });
+function toggleModal(modal){
+  modal.classList.toggle('popout__container_active');
+  if (modal.classList.contains('popout__container_active')) {
+    document.addEventListener('keydown', escapeModal);
+  } else {
+    document.removeEventListener('keydown', escapeModal);
+  }
 }
-
-modalOtherToggle();
+//This seems to work with no errors in dev tools like what I had in the past submits
+function escapeModal(e) {
+  if (e.key === "Escape") {
+    toggleModal(document.querySelector('.popout__container_active'));
+  }
+}
 
 profileFormElement.addEventListener('submit', profileFormSubmitHandler);
 editBtn.addEventListener("click", () => toggleModal(profilePopout));
