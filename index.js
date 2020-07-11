@@ -124,19 +124,9 @@ const defaultConfig = {
           modal.addEventListener("click", (evt) => {
           toggleModal(evt.target);
           });
-  
       });
-      modalList.forEach(() => {
-          
-          document.addEventListener("keydown", (evt) =>{
-              const escKeyCode = 27;
-              if (evt.keyCode === escKeyCode){
-                  toggleModal(document.querySelector(".popout__container_active"));
-          }
-      });
-     });
-  }
-  
+    }
+
   modalOtherToggle();
   
   profileFormElement.addEventListener('submit', profileFormSubmitHandler);
