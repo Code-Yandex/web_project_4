@@ -28,7 +28,7 @@ class Card {
   }
 
   _setEventListeners() {
-    this._trashButton.addEventListener("click", (evt) => {
+    this._trashButton.addEventListener("click", () => {
       this._element.closest(".gallery__container").remove();
        
     });
@@ -36,7 +36,7 @@ class Card {
       this._likeButton.classList.toggle("gallery__like-button_active");
        
     });
-    this._element.querySelector(".gallery__image").addEventListener("click", (evt) => {
+    this._element.querySelector(".gallery__image").addEventListener("click", () => {
         const picturePopout = document.querySelector(".popout__container_picture-view");
         const popoutImage = picturePopout.querySelector(".popout__picture");
         const popoutTitle = picturePopout.querySelector(".popout__title");
