@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Around the USA</title>
     <meta name="author" content="Austin Cook">
-    <link rel="stylesheet" type="text/css" href='pages/index.css'>
+    <!-- <link rel="stylesheet" type="text/css" href='pages/index.css'> -->
   </head>
   <body class="page">
     <div class="page__content">
@@ -39,14 +39,14 @@
                   <h2 class="popout__form-text">Edit profile</h2>
                     <input required id="name" 
                       class="popout__form-input popout__form-input_type_name" 
-                      type="text" name="name" minlength="2" maxlength="40" value="George Wheeler">
+                      type="text" name="userName" minlength="2" maxlength="40" value="George Wheeler">
                     <span id="name-error" 
-                      class="popout__form-input-error popout__form-input_type_image-error"></span>
+                      class="popout__form-input-error popout__form-input_type_name-error"></span>
                     <input required id="about" 
                       class="popout__form-input popout__form-input_type_job" 
-                      type="text" name="about-me" minlength="2" maxlength="200" value="Explorer">
+                      type="text" name="userJob" minlength="2" maxlength="200" value="Explorer">
                     <span id="about-error" 
-                      class="popout__form-input-error popout__form-input_type_name-error"></span>
+                      class="popout__form-input-error popout__form-input_type_job-error"></span>
                     <button class="popout__button popout__button_type_save" 
                       type="submit" value="Save">Save</button>
               </form>
@@ -58,10 +58,10 @@
               <form class="popout__form popout_gallery-add__form" novalidate>
                   <h2 class="popout__form-text popout_gallery-add__form-text">New Place</h2>
                     <input required id="title" class="popout__form-input popout__form-input_type_title" 
-                      type="text" minlength="1" maxlength="30" name="title" placeholder="Title" >
+                      type="text" minlength="1" maxlength="30" name="name" placeholder="Title" >
                     <span id="title-error" class="popout__form-input-error popout__form-input_type_title-error"></span>
                     <input required id="image" class="popout__form-input popout__form-input_type_image" 
-                      type="url" name="image-link" placeholder="Image link">
+                      type="url" name="link" placeholder="Image link">
                     <span id="image-error" class="popout__form-input-error popout__form-input_type_image-error"></span>
                     <button disabled class="popout__button popout__button_disabled popout__button_type_create" 
                       type="submit" value="Save">Create</button>
@@ -72,7 +72,7 @@
           <div class="popout__container popout__container_picture-view">
               <button class="popout__close-button" aria-label="close-button"></button>
               <figure class="popout__picture-container">
-                <img class="popout__picture" src="" alt="">
+                <img class="popout__picture">
                 <figcaption class="popout__title"></figcaption> 
               </figure>
           </div>
@@ -80,16 +80,15 @@
     </div>
   <template id="gallery-object">
       <li class="gallery__container">
-          <img class="gallery__image" src="" alt=""><button class="gallery__trash-button" 
+          <img class="gallery__image"><button class="gallery__trash-button" 
             aria-label="trash-button"></button>
           <div class="gallery__group"><h3 class="gallery__text"> Mount Rushmore</h3>
             <button class="gallery__like-button" aria-label="like-button"></button>
           </div>
       </li>
   </template>
-    <script type="module" src="./toggle.js"></script>
-    <script type="module" src="./Card.js"></script>
+   <!-- <script type="module" src="./Card.js"></script>
     <script type="module" src="./FormValidator.js"></script>
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="./index.js"></script> -->
   </body>
 </html>
