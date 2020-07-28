@@ -68,4 +68,7 @@ const defaultConfig = {
 
   const escKeyCode = 27;
 
-  export {profilePopout, nameInput, jobInput, profileFormElement, editBtn,addButton,galleryPopout,galleryFormElement,titleInput,imageInput,galleryContainer,picturePopout, initialCards, defaultConfig, escKeyCode}
+  export {profilePopout, nameInput, jobInput, profileFormElement, 
+    editBtn, addButton, galleryPopout, galleryFormElement, titleInput, 
+    imageInput, galleryContainer, picturePopout, initialCards, 
+    defaultConfig, escKeyCode}
