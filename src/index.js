@@ -1,7 +1,7 @@
 import {Card} from "./components/Card.js";
 import {FormValidator} from "./components/FormValidator.js";
 import {profilePopout, nameInput, jobInput, profileFormElement, 
-    editBtn, addButton, galleryPopout, galleryFormElement, 
+    editBtn, galleryPopout, galleryFormElement, 
     titleInput, imageInput, galleryContainer, picturePopout, 
     initialCards, defaultConfig} from "./utils/constants.js";
 import PopupWithForm from "./components/PopupWithForm.js";
@@ -9,7 +9,6 @@ import PopupWithImage from "./components/PopupWithImage.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
 import "./pages/index.css";
-import { data } from "autoprefixer";
 
 
 const profileValidator = new FormValidator(defaultConfig, profileFormElement);

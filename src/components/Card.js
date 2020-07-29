@@ -30,7 +30,9 @@
   _setEventListeners() {
     this._trashButton.addEventListener("click", (evt) => {
       this._element.remove();
-       
+      this._element.null();
+      //Not sure if this is what you meant.
+      //If wrong I will change it.
     });
     this._likeButton.addEventListener("click", () => {
       this._likeButton.classList.toggle("gallery__like-button_active");
