@@ -1,10 +1,10 @@
 {
   "name": "web_project_4",
   "version": "1.0.0",
-  "description": "This time we are learing Javascript and how to make buttons and a popbox using it to function.\r Also a few other things to improve upon what we have learned thus far.",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf  -rf dist && webpack",
+    "build": "rimraf -rf dist && webpack",
     "dev": "webpack-dev-server --open --watch"
   },
   "repository": {

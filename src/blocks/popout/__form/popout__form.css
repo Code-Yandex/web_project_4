@@ -12,6 +12,10 @@
     position: relative;
 }
 
+.popout_delete__form{
+    height: 181px;
+}
+
 @media screen and (max-width: 500px) {
     .popout__form {
         width: 240px;

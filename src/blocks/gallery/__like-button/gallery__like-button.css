@@ -1,18 +1,20 @@
-.gallery__like-button {
-    display: flex;
-    justify-self: flex-end;
-    margin: 30px 21px 0 0;
-    width: 20.76px;
-    height: 18.13px;
-    border: none;
-    padding: 0;
-    background-color: white;
+.gallery__like-button{
+    padding: 21px;
+    display: inline-block;
+    margin: 0;
+    margin-right: 5px;
+    text-decoration: none;
+    background: #FFFFFF;
+    cursor: pointer;
     background-image: url(../../../images/heart.svg);
-    transition: background-image opacity .5s ease-in-out;  
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0;
+    border: none;  
 }
 
 .gallery__like-button:hover {
-    cursor: pointer;
     opacity: .6;
 }
 
