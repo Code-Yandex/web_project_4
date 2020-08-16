@@ -113,7 +113,6 @@ const deleteForm = new PopupWithForm({popupSelector: deletePopout, formSubmissio
     api.removeCard(deleteInput.value)
     .then(()=> deleteForm.runDeleteHandle())
     .then(() => setButtonText(deletePopout, "Yes"))
-    // .then(() => {location.reload()})
 }})
 deleteForm.setEventListeners();
 
@@ -137,14 +136,15 @@ api.getUserInfo().then((res)=> {
         nameInput.value = currentUserInfo.name;
         jobInput.value = currentUserInfo.job;
    });
-}
-);
+});
+
 const avatarEditForm = new PopupWithForm({popupSelector: avatarPopout, formSubmission: () => {
     setButtonText(avatarPopout, "Saving")
     avatar.src = avatarLink.value;
     api.setUserAvatar({avatar: avatarLink.value});
     setButtonText(avatarPopout, "Save")
-}})
+}});
+
 avatarEditForm.setEventListeners();
 const avatarValidator = new FormValidator(defaultConfig, avatarFormElement)
 avatarValidator.enableValidation();
