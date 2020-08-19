@@ -149,7 +149,7 @@ avatarEditForm.setEventListeners();
 const avatarValidator = new FormValidator(defaultConfig, avatarFormElement)
 avatarValidator.enableValidation();
 
-avatarEdit.addEventListener("click", ()=> toggleModal(avatarPopout));
+//avatarEdit.addEventListener("click", ()=> toggleModal(avatarPopout));
 
 const profileValidator = new FormValidator(defaultConfig, profileFormElement);
 const galleryValidator = new FormValidator(defaultConfig, galleryFormElement);
