@@ -52,7 +52,7 @@ api.getCardList().then((res)=> {
         api.getUserInfo()
         .then((res)=>{
        
-            if (res._id != data.owner._id){
+            if (res._id !== data.owner._id){
                 card.hideTrash()
                 
             } else {
