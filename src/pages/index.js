@@ -1,17 +1,17 @@
-import {Card} from "./components/Card.js";
-import {FormValidator} from "./components/FormValidator.js";
+import {Card} from "../components/Card.js";
+import {FormValidator} from "../components/FormValidator.js";
 import {profilePopout, nameInput, avatar, avatarFormElement, 
     deleteInput, jobInput, deletePopout, avatarLink, avatarPopout, 
     avatarEdit, profileFormElement, editBtn, addButton, galleryPopout, 
     galleryFormElement, titleInput, imageInput, galleryContainer, 
-    picturePopout, defaultConfig} from "./utils/constants.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import Section from "./components/Section.js";
-import UserInfo from "./components/UserInfo.js";
-import "./pages/index.css";
-import Api from "./components/Api.js";
-import {toggleModal, setButtonText} from "./utils/utils.js";
+    picturePopout, defaultConfig} from "../utils/constants.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import "./index.css";
+import Api from "../components/Api.js";
+import {toggleModal, setButtonText} from "../utils/utils.js";
 
 const api = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/group-3", 
@@ -55,10 +55,7 @@ api.getCardList().then((res)=> {
             if (res._id !== data.owner._id){
                 card.hideTrash()
                 
-            } else {
-                card.setTrashListener()
-               
-            }
+            } 
             data.likes.some((thing) => {if (thing._id == res._id){
                 card.addLike();
             }});
@@ -66,11 +63,11 @@ api.getCardList().then((res)=> {
         })
             .catch((err)=> console.log(err))
         }, 
-        
+       
 }, galleryContainer)
 
 cardList.renderer()
-
+console.log("testing");
 const galleryForm = new PopupWithForm({popupSelector:galleryPopout, formSubmission: ()=> {
     setButtonText(galleryPopout, "Saving...")
     api.addCard({name: titleInput.value, link: imageInput.value}).then((res)=>{
@@ -95,7 +92,7 @@ const galleryForm = new PopupWithForm({popupSelector:galleryPopout, formSubmissi
             }
             }} 
     , "#gallery-object")
-    newCard.setTrashListener()
+
     cardList.addItem(newCard.generateCard());
     galleryValidator.enableValidation()}
     )
@@ -142,14 +139,14 @@ const avatarEditForm = new PopupWithForm({popupSelector: avatarPopout, formSubmi
     setButtonText(avatarPopout, "Saving")
     avatar.src = avatarLink.value;
     api.setUserAvatar({avatar: avatarLink.value});
-    setButtonText(avatarPopout, "Save")
+    setButtonText.then(avatarPopout, "Save")
 }});
 
 avatarEditForm.setEventListeners();
 const avatarValidator = new FormValidator(defaultConfig, avatarFormElement)
 avatarValidator.enableValidation();
 
-//avatarEdit.addEventListener("click", ()=> toggleModal(avatarPopout));
+avatarEdit.addEventListener("click", ()=> toggleModal(avatarPopout));
 
 const profileValidator = new FormValidator(defaultConfig, profileFormElement);
 const galleryValidator = new FormValidator(defaultConfig, galleryFormElement);

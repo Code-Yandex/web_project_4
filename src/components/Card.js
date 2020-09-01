@@ -54,16 +54,16 @@ class Card {
     this.likeButton.classList.remove("gallery__like-button_active");
   }
 
-  setTrashListener() {
-    this._trashButton.addEventListener("click", () => {
-      this._handleTrashClick(this._id);
-    });
-  }
 
   _setEventListeners() {
     this.likeButton.addEventListener("click", () => {
       this._handleLikeClick(this._id);
     });
+
+      this._trashButton.addEventListener("click", () => {
+        this._handleTrashClick(this._id);
+      });
+    
     this._galleryImage.addEventListener("click", () => this._handleCardClick({name: this._title, link: this._image}))
   }
 }
