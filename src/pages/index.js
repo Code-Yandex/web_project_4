@@ -22,31 +22,8 @@ const api = new Api({
 api.getCardList().then((res) => {
     const cardList = new Section({
     items: res,
-    renderer: (data)=> { 
+    renderer: (data) => { 
        
-        const card = new Card ({
-            data,
-            handleCardClick:()=>{
-                imagePopup.open({data})
-            }, 
-            handleTrashClick: (id) => {
-                toggleModal(deletePopout) 
-                deleteInput.value = id;
-                deleteForm.setDeleteHandle(()=>{card.removeCard()})
-            },
-            handleLikeClick: (id) => {
-                if (card.likeButton.classList.contains("gallery__like-button_active")){
-                    card.removeLike();
-                    api.changeLikeCardStatus( id, false)
-                    .then(res => card.setLikeCount(res.likes.length));                           
-                } else {
-                    card.addLike();    
-                    api.changeLikeCardStatus(id, true)
-                    .then(res => card.setLikeCount(res.likes.length));
-                }
-            }  
-        }, "#gallery-object");
-
         card.setLikeCount(data.likes.length);
         cardList.addItem(card.generateCard());
         api.getUserInfo()
@@ -56,7 +33,7 @@ api.getCardList().then((res) => {
                 card.hideTrash()
                 
             } 
-            data.likes.some((thing) => {if (thing._id == res._id){
+            data.likes.some((thing) => {if (thing._id == res._id) {
                 card.addLike();
             }});
 
@@ -67,10 +44,10 @@ api.getCardList().then((res) => {
 
 cardList.renderer()
 console.log("testing");
-const galleryForm = new PopupWithForm({popupSelector:galleryPopout, formSubmission: ()=> {
+const galleryForm = new PopupWithForm({popupSelector:galleryPopout, formSubmission: () => {
     setButtonText(galleryPopout, "Saving...")
     api.addCard({name: titleInput.value, link: imageInput.value}).then((res)=>{
-    const newCard = new Card ({
+    const newCard = new card ({
         data: res, 
         handleCardClick:(data) => {
             imagePopup.open({data})}, 
