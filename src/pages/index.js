@@ -18,7 +18,28 @@ const api = new Api({
     headers: {
     authorization: "b8745c93-1f67-43db-8189-ce066047389a",
     "content-type": "application/json"}});
+ 
+    api.getUserInfo().then((res) => {
+        const userInfo = new UserInfo(".profile__name", ".profile__profession")
+        avatar.src = res.avatar
+        userInfo.setUserInfo({userName:res.name, userJob:res.about}) 
     
+        const profileForm = new PopupWithForm({popupSelector:profilePopout, formSubmission: (data)=> {
+            api.setUserInfo({name: nameInput.value, about: jobInput.value})
+            .then((res) => {userInfo.setUserInfo({userName: res.name, userJob: res.about });
+            profileValidator.enableValidation()})
+            }});
+            profileForm.setEventListeners();
+            setButtonText(profilePopout, "Save")
+    
+        editBtn.addEventListener("click", () => {
+            profileForm.open();
+            const currentUserInfo = userInfo.getUserInfo();
+            nameInput.value = currentUserInfo.name;
+            jobInput.value = currentUserInfo.job;
+       });
+    });   
+
 api.getCardList().then((res) => {
     const cardList = new Section({
     items: res,
@@ -38,11 +59,13 @@ api.getCardList().then((res) => {
                 if (card.likeButton.classList.contains("gallery__like-button_active")){
                     card.removeLike();
                     api.changeLikeCardStatus( id, false)
-                    .then(res => card.setLikeCount(res.likes.length));                           
+                    .then(res => card.setLikeCount(res.likes.length))
+                    .catch((err) => console.log(err));                        
                 } else {
                     card.addLike();    
                     api.changeLikeCardStatus(id, true)
-                    .then(res => card.setLikeCount(res.likes.length));
+                    .then(res => card.setLikeCount(res.likes.length))
+                    .catch((err) => console.log(err));
                 }
             }  
         }, "#gallery-object");
@@ -83,11 +106,13 @@ const galleryForm = new PopupWithForm({popupSelector:galleryPopout, formSubmissi
             if (newCard.likeButton.classList.contains("gallery__like-button_active")){
                 newCard.removeLike();
                 api.changeLikeCardStatus( id, false)
-                .then(res => newCard.setLikeCount(res.likes.length));                           
+                .then(res => newCard.setLikeCount(res.likes.length))
+                .catch((err) => console.log(err));                           
             } else {
                 newCard.addLike();    
                 api.changeLikeCardStatus(id, true)
-                .then(res => newCard.setLikeCount(res.likes.length));
+                .then(res => newCard.setLikeCount(res.likes.length))
+                .catch((err) => console.log(err));
             }
             }} 
     , "#gallery-object")
@@ -109,36 +134,16 @@ const deleteForm = new PopupWithForm({popupSelector: deletePopout, formSubmissio
     api.removeCard(deleteInput.value)
     .then(() => deleteForm.runDeleteHandle())
     .then(() => setButtonText(deletePopout, "Yes"))
+    .catch((err) => console.log(err))
 }})
 deleteForm.setEventListeners();
 
-api.getUserInfo().then((res) => {
-    const userInfo = new UserInfo(".profile__name", ".profile__profession")
-    avatar.src = res.avatar
-    userInfo.setUserInfo({userName:res.name, userJob:res.about}) 
-
-    const profileForm = new PopupWithForm({popupSelector:profilePopout, formSubmission: (data)=> {
-        setButtonText(profilePopout, "Saving...")
-        api.setUserInfo({name: nameInput.value, about: jobInput.value})
-        .then((res) => {userInfo.setUserInfo({userName: res.name, userJob: res.about });
-        profileValidator.enableValidation()})
-        }});
-        profileForm.setEventListeners();
-        setButtonText(profilePopout, "Save")
-
-    editBtn.addEventListener("click", () => {
-        profileForm.open();
-        const currentUserInfo = userInfo.getUserInfo();
-        nameInput.value = currentUserInfo.name;
-        jobInput.value = currentUserInfo.job;
-   });
-});
 
 const avatarEditForm = new PopupWithForm({popupSelector: avatarPopout, formSubmission: () => {
     setButtonText(avatarPopout, "Saving")
     avatar.src = avatarLink.value;
-    api.setUserAvatar.then({avatar: avatarLink.value});
-    setButtonText.then(avatarPopout, "Save")
+    api.setUserAvatar({avatar: avatarLink.value})
+    .then(() => setButtonText(avatarPopout, "Save"))
 }});
 
 avatarEditForm.setEventListeners();
