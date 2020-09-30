@@ -35,6 +35,8 @@ Promise.all([api.getUserInfo(), api.getCardList()]).then(([userInfo, cardsInfo])
                     user.setUserInfo({ userName: userInfo.name, userJob: userInfo.about });
                     profileValidator.enableValidation()
                 })
+                .then(() => profileForm.close())
+                .catch((err) => console.log(err))
         }
     });
     profileForm.setEventListeners();
@@ -94,7 +96,7 @@ Promise.all([api.getUserInfo(), api.getCardList()]).then(([userInfo, cardsInfo])
     }, galleryContainer)
 
     cardList.renderer()
-    console.log("testing");
+    //console.log("testing");
     const galleryForm = new PopupWithForm({
         popupSelector: galleryPopout, formSubmission: () => {
             setButtonText(galleryPopout, "Saving...")
@@ -103,7 +105,9 @@ Promise.all([api.getUserInfo(), api.getCardList()]).then(([userInfo, cardsInfo])
                 galleryValidator.enableValidation()
             }
             )
-            setButtonText(galleryPopout, "Create")
+            .then(() => setButtonText(galleryPopout, "Create"))
+            .then(() => galleryForm.close())
+            .catch((err) => console.log(err))
         }
     })
 
@@ -118,6 +122,7 @@ const deleteForm = new PopupWithForm({
         api.removeCard(deleteInput.value)
             .then(() => deleteForm.runDeleteHandle())
             .then(() => setButtonText(deletePopout, "Yes"))
+            .then(() => deleteForm.close())
             .catch((err) => console.log(err))
     }
 })
@@ -130,6 +135,8 @@ const avatarEditForm = new PopupWithForm({
         avatar.src = avatarLink.value;
         api.setUserAvatar({ avatar: avatarLink.value })
             .then(() => setButtonText(avatarPopout, "Save"))
+            .then(() => avatarEditForm.close())
+            .catch((err) => console.log(err))
     }
 });
 
